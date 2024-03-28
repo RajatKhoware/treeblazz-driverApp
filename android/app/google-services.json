@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "170460970342",
+    "project_id": "treeblazz-680ae",
+    "storage_bucket": "treeblazz-680ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170460970342:android:ab568e402afcd757c49ca7",
+        "android_client_info": {
+          "package_name": "com.example.tree_blazz_01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170460970342-b59celscpmo810lklsvgc95h6lathrm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tree_blazz_01",
+            "certificate_hash": "d1252f4855e2774a24b2c8077b50264d0892658d"
+          }
+        },
+        {
+          "client_id": "170460970342-ddf7ruhis55rdknjuljl2l6ag193bms2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLGwn3E0rtzGfYcglpYOTtxN9TOeRb7Rk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170460970342-ddf7ruhis55rdknjuljl2l6ag193bms2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "170460970342-3lc1l17k3dc0sob8hpbtpsb95k3hj3qg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.treeBlazz01.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

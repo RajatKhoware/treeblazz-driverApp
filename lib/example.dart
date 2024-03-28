@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../res/comman/my_appbar.dart';
+import 'utils/comman/my_appbar.dart';
 
 class YourScreen extends StatelessWidget {
   static const String routeName = '/Your';

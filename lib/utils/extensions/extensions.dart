@@ -1,6 +1,7 @@
 import 'dart:developer' as dev show log;
 import 'package:flutter/material.dart';
-import 'package:tb_driver/res/comman/my_text.dart';
+import 'package:tb_driver/utils/comman/my_text.dart';
+import 'package:tb_driver/utils/constant/enum.dart';
 
 extension NavigationExtensions on BuildContext {
   void pushNamedRoute(String routeName) {
@@ -49,5 +50,21 @@ extension PriceExtension on String {
         ),
       ],
     );
+  }
+}
+
+extension OrderStatusEnum on OrderStatus {
+  static List<String> orderStatus = [
+    // "Placed",
+    // "Cancelled by user",
+    // "Accepted",
+    // "Preparing",
+    "New Orders",
+    "Pickedup",
+    "Out for delivery",
+    "Delivered",
+  ];
+  String enumToString() {
+    return orderStatus[index];
   }
 }
