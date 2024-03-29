@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tb_driver/data/models/order.dart';
+import 'package:tb_driver/data/models/order_model.dart';
 import 'package:tb_driver/data/models/products.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
@@ -125,8 +125,8 @@ class Utils {
   }
 
   // Fucntion generate 100 dummy orders
-  static List<Orders> generateDummyOrders(List<Product> dummyProducts) {
-    List<Orders> orders = [];
+  static List<OrderModel> generateDummyOrders(List<Product> dummyProducts) {
+    List<OrderModel> orders = [];
     Random random = Random();
 
     for (int i = 0; i < 100; i++) {
@@ -155,7 +155,7 @@ class Utils {
       final paymentMode =
           PaymentMode.values[random.nextInt(PaymentMode.values.length)];
       orders.add(
-        Orders(
+        OrderModel(
           id: '${i + 1}',
           date: '2024-03-${random.nextInt(30) + 1}',
           time: time,

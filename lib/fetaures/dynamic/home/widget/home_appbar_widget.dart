@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tb_driver/fetaures/static/bottom%20bar/view/app_bottomBar.dart';
+import 'package:tb_driver/fetaures/static/navigation%20menu/controller/navigation_menu_controller.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 import 'package:tb_driver/utils/constant/app_images.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
@@ -14,6 +15,7 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final navigationMenuController = NavigationMenuController.instance;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -21,9 +23,7 @@ class HomeAppBar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushScreen(
-                  const AppBottomBar(selectedIndex: 2),
-                );
+                navigationMenuController.onItemTapped(2);
               },
               child: CircleAvatar(
                 radius: width * 0.065,

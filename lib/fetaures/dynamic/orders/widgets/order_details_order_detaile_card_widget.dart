@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tb_driver/data/models/order.dart';
+import 'package:get/get.dart';
+import 'package:tb_driver/data/models/order_model.dart';
+import 'package:tb_driver/fetaures/dynamic/orders/controllers/order_controller.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 import 'package:tb_driver/utils/extensions/extensions.dart';
 
 class OrderDetailsOrderCard extends StatelessWidget {
-  final Orders order;
+  final OrderModel order;
 
   const OrderDetailsOrderCard({super.key, required this.order});
 
@@ -28,12 +30,16 @@ class OrderDetailsOrderCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Obx(
+          //   () =>
+
           buildDetailes(
             context,
             "Order Status",
-            order.status.enumToString(),
+            OrderController.instance.selectedOrder[0].status.enumToString(),
             isOrderStatus: true,
           ),
+          //),
           buildDetailes(context, "Order Number", "#534345"),
           buildDetailes(context, "Placed Date", "30 Dec 24"),
           buildDetailes(context, "Store Name", "CBD VEG Store"),

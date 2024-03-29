@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:tb_driver/data/models/order.dart';
+import 'package:tb_driver/data/models/order_model.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 import 'package:tb_driver/utils/constant/app_images.dart';
@@ -8,7 +8,7 @@ import 'package:tb_driver/utils/utils.dart';
 
 class OrdersCard extends StatelessWidget {
   final VoidCallback? onTap;
-  final Orders order;
+  final OrderModel order;
   const OrdersCard({
     super.key,
     this.onTap,
@@ -95,7 +95,7 @@ class OrdersCard extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: height * 0.016),
-                Utils.checkOrderStatus(order.status, width),
+                // Utils.checkOrderStatus(order.status, width),
                 // SizedBox(height: height * 0.016),
                 // MyTextSansPro(
                 //   text: Utils.getPaymentModeString(order.paymentMode),

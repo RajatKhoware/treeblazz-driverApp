@@ -49,9 +49,9 @@ class AppList {
   ];
 
   static const List<String> profileOptions = [
-    "History",
-    "My Cash Balance",
-    "Earing History",
+    // "History",
+    // "My Cash Balance",
+    // "Earing History",
     "Change Password",
     "Help",
     "FAQ",

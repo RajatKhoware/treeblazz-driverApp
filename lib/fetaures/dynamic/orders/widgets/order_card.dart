@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:tb_driver/data/models/order.dart';
+import 'package:tb_driver/data/models/order_model.dart';
+import 'package:tb_driver/fetaures/dynamic/orders/controllers/order_controller.dart';
 import 'package:tb_driver/fetaures/dynamic/orders/screens/order_details_screen.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
@@ -11,7 +12,7 @@ import 'package:tb_driver/utils/utils.dart';
 
 class OrdersCard extends StatelessWidget {
   final VoidCallback? onTap;
-  final Orders order;
+  final OrderModel order;
   const OrdersCard({
     super.key,
     this.onTap,
@@ -25,7 +26,8 @@ class OrdersCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap ??
           () {
-            Get.to(() => OrderDetailsScreen(order: order));
+            Get.to(() => OrderDetailsScreen(orders: order));
+            OrderController.instance.setSelectedOrder(order);
           },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: height * 0.01),

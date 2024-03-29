@@ -125,9 +125,10 @@ class HomeOrderCard extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       text: "Accept Order",
-                      // onTap: () {},
-                      onTap: () =>
-                          Get.to(() => OrderDetailsScreen(order: order)),
+                      onTap: () {
+                        Get.to(() => OrderDetailsScreen(orders: order));
+                        orderController.setSelectedOrder(order);
+                      },
                     ),
                   ),
                 ],

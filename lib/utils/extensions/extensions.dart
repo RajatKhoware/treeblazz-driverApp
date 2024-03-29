@@ -60,7 +60,7 @@ extension OrderStatusEnum on OrderStatus {
     // "Accepted",
     // "Preparing",
     "New Orders",
-    "Pickedup",
+    "PickedUp",
     "Out for delivery",
     "Delivered",
   ];

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tb_driver/data/models/order.dart';
+import 'package:tb_driver/data/models/order_model.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 
 class OrderDetailsBillingCard extends StatelessWidget {
-  final Orders order;
+  final OrderModel order;
   const OrderDetailsBillingCard({super.key, required this.order});
 
   @override

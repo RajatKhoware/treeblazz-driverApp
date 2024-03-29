@@ -38,11 +38,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const HomeScreen(),
       );
-    case AppBottomBar.routeName:
-      return MaterialPageRoute(
-        settings: routeSettings,
-        builder: (_) => const AppBottomBar(),
-      );
+    // case AppBottomBar.routeName:
+    //   return MaterialPageRoute(
+    //     settings: routeSettings,
+    //     builder: (_) => const AppBottomBar(),
+    //   );
     case EditProfileScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
@@ -63,11 +63,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const NotificationScreen(),
       );
-    case RiderNavigationScreen.routeName:
-      return MaterialPageRoute(
-        settings: routeSettings,
-        builder: (_) => const RiderNavigationScreen(),
-      );
+    // case RiderNavigationScreen.routeName:
+    //   return MaterialPageRoute(
+    //     settings: routeSettings,
+    //     builder: (_) => const RiderNavigationScreen(),
+    //   );
     case MyEarningScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,

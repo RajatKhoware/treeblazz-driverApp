@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tb_driver/fetaures/dynamic/auth/controllers/signin_controller.dart';
 import 'package:tb_driver/fetaures/dynamic/auth/controllers/signup_controller.dart';
+import 'package:tb_driver/fetaures/static/navigation%20menu/view/app_navigation_menu.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/extensions/extensions.dart';
@@ -18,22 +20,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Key to validate form
-    final _signInFormKey = GlobalKey<FormState>();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-
-    // Have to dispose this controllers
-    // emailController.dispose();
-    // passwordController.dispose();
-
-    void onGetStarted() {
-      if (_signInFormKey.currentState!.validate()) {
-        context.pushNamedRoute("/bottomBar");
-      }
-    }
-
-    final controller = Get.put(SignupController());
+    final controller = Get.put(SigninController());
 
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
@@ -53,18 +40,18 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: height * 0.03),
               // Textfields
               Form(
-                key: _signInFormKey,
+                key: controller.signInFormKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   children: [
                     MyTextFeild(
-                      controller: emailController,
+                      controller: controller.emailController,
                       headingText: "Email Address",
                       hintText: "Enter your email",
                       validator: Validator().validateEmail,
                     ),
                     PasswordTextFeild(
-                      controller: passwordController,
+                      controller: controller.passwordController,
                       headingText: "Password",
                       hintText: "Enter your password",
                       validator: Validator().validatePassword,
@@ -87,7 +74,8 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: height * 0.08),
               CustomButton(
                 text: "Get Started",
-                onTap: onGetStarted,
+                onTap: () => Get.to(() => const NavigationMenu()),
+                // onTap: controller.emailAndPasswordSignIn,
               ),
               SizedBox(height: height * 0.02),
               // Login with social

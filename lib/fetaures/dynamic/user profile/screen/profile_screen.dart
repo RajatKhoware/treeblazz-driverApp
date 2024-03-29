@@ -18,9 +18,9 @@ class ProfileScreen extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
 
     List onTapOnList = [
-      () => context.pushNamedRoute("/myAddress"),
-      () => context.pushNamedRoute("/myCashBalance"),
-      () => context.pushNamedRoute("/myEarning"),
+      // () => context.pushNamedRoute("/myAddress"),
+      // () => context.pushNamedRoute("/myCashBalance"),
+      // () => context.pushNamedRoute("/myEarning"),
       () => context.pushNamedRoute("/changePassword"),
       () => context.pushNamedRoute("/support"),
       () => context.pushNamedRoute('/faq'),
@@ -101,11 +101,13 @@ class ProfileScreen extends StatelessWidget {
               child: ListView.builder(
                 itemCount: AppList.profileOptions.length,
                 itemBuilder: (context, index) {
+                  final isLastIndex = index == 4;
                   return BuildProfileCard(
                     heading: AppList.profileOptions[index],
                     onTap: onTapOnList[index],
-                    headingColor: index == 8 ? AppColor.redColor : Colors.black,
-                    isArrow: index == 8 ? false : true,
+                    headingColor:
+                        isLastIndex ? AppColor.redColor : Colors.black,
+                    isArrow: isLastIndex ? false : true,
                   );
                 },
               ),
@@ -116,3 +118,5 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+
+//List order = [Orderm]

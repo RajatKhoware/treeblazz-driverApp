@@ -54,15 +54,15 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: AppColor.white,
       ),
-      home: const SplashScreen(),
-      // home: const Scaffold(
-      //   backgroundColor: AppColor.white,
-      //   body: Center(
-      //     child: CircularProgressIndicator(
-      //       color: AppColor.redColor,
-      //     ),
-      //   ),
-      // ),
+      // home: const SplashScreen(),
+      home: const Scaffold(
+        backgroundColor: AppColor.white,
+        body: Center(
+          child: CircularProgressIndicator(
+            color: AppColor.redColor,
+          ),
+        ),
+      ),
       navigatorKey: navigatorKey,
       onGenerateRoute: (settings) => generateRoute(settings),
     );
