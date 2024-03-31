@@ -30,7 +30,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final controller = OrderController.instance;
-    final order = controller.selectedOrder[0];
+    final order = controller.order.value;
 
     return Scaffold(
         backgroundColor: AppColor.white,
@@ -44,14 +44,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomButton(
-                    text: "Refresh Page",
-                    onTap: () {
-                      setState(() {});
-                    }),
                 // buildHeading(context, "Order Details"),
-                SizedBox(height: height * 0.02),
-                OrderDetailsOrderCard(order: order),
+                //  SizedBox(height: height * 0.02),
+                const OrderDetailsOrderCard(),
                 SizedBox(height: height * 0.02),
 
                 // -- Delivery Details
@@ -118,38 +113,43 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                 // -- Order Products
                 buildHeading(context, "Shopping Details"),
                 SizedBox(height: height * 0.02),
-                OrderDetailsProductsCard(order: order),
+                const OrderDetailsProductsCard(),
                 SizedBox(height: height * 0.02),
                 // -- Order Billing Details
                 buildHeading(context, "Billing Details"),
                 SizedBox(height: height * 0.02),
-                OrderDetailsBillingCard(order: order),
+                const OrderDetailsBillingCard(),
                 SizedBox(height: height * 0.02),
               ],
             ),
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: width * 0.062,
-            vertical: height * 0.02,
-          ),
-          child: SizedBox(
-              height: height * 0.075,
-              child: Obx(
-                () => CustomButton(
+        bottomNavigationBar: GetBuilder(
+          init: OrderController(),
+          builder: (controller) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: width * 0.062,
+                vertical: height * 0.02,
+              ),
+              child: SizedBox(
+                height: height * 0.075,
+                child: CustomButton(
                   buttonColor: AppColor.green,
-                  text: OrderController.instance.selectedOrder.first.status ==
-                          OrderStatus.readyForPickup
+                  text: order.status == OrderStatus.readyForPickup
                       ? "Start PICKUP"
-                      : "Start Delivery",
+                      : order.status == OrderStatus.outForDelivery
+                          ? "Start Delivery"
+                          : "",
                   onTap: () => Get.to(
                     () => const RiderNavigationScreen(),
                   ),
                   vspacing: height * 0.02,
                   fontSize: width * 0.043,
                 ),
-              )),
+              ),
+            );
+          },
         ));
   }
 

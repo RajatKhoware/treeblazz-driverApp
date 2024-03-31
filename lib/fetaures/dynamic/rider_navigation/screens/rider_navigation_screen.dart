@@ -15,7 +15,7 @@ class RiderNavigationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
-    final order = OrderController.instance.selectedOrder;
+    final order = OrderController.instance.order;
 
     return Scaffold(
       body: Stack(

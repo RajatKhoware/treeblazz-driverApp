@@ -3,14 +3,18 @@ import 'package:tb_driver/data/models/order_model.dart';
 import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 
+import '../controllers/order_controller.dart';
+
 class OrderDetailsBillingCard extends StatelessWidget {
-  final OrderModel order;
-  const OrderDetailsBillingCard({super.key, required this.order});
+  
+  const OrderDetailsBillingCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final order = OrderController.instance.order.value;
+
     return Column(
       children: [
         Container(

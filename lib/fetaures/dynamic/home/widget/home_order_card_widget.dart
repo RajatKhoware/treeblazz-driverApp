@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -127,7 +129,7 @@ class HomeOrderCard extends StatelessWidget {
                       text: "Accept Order",
                       onTap: () {
                         Get.to(() => OrderDetailsScreen(orders: order));
-                        orderController.setSelectedOrder(order);
+                        orderController.getOrderDetails(order.id);
                       },
                     ),
                   ),

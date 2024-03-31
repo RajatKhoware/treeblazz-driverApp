@@ -21,11 +21,11 @@ class OrderController extends GetxController {
   //* Variables
   final RxList<OrderModel> _dummyOrders = <OrderModel>[].obs;
   final RxList<OrderModel> _filteredOrders = <OrderModel>[].obs;
-  final RxList<OrderModel> _selectedOrder = <OrderModel>[].obs;
+  final Rx<OrderModel> _order = OrderModel.empty().obs;
 
   //* Getters
   List<OrderModel> get filteredOrders => _filteredOrders;
-  List<OrderModel> get selectedOrder => _selectedOrder;
+  Rx<OrderModel> get order => _order;
 
   //* Methods
   // filtering the order based on there status
@@ -57,25 +57,22 @@ class OrderController extends GetxController {
     return filterOrdersByStatus(status).length;
   }
 
-  // Change Order Status
-  // Change Order Status
-  void changeOrderStatus(OrderStatus newStatus) {
-    if (selectedOrder.isNotEmpty) {
-      // Check if selectedOrder is not empty
-      _selectedOrder[0].status = newStatus;
-      // Notify listeners about the change
-      _selectedOrder.refresh();
-    }
+  // -- Get Order By Id
+  void getOrderDetails(String orderId) {
+    OrderModel order = _dummyOrders.firstWhere(
+      (order) => order.id == orderId.toString(),
+      orElse: () => OrderModel.empty(),
+    );
+    _order.value = order;
   }
 
-  // Method to set selected order
-  void setSelectedOrder(OrderModel order) {
-    _selectedOrder.clear();
-    _selectedOrder.assign(order);
+  // -- Change Order Status
+  void changeOrderStatus(OrderStatus newStatus) {
+    _order.value.status = newStatus;
   }
 
   void orderPicked() {
-    if (selectedOrder[0].status == OrderStatus.readyForPickup) {
+    if (_order.value.status == OrderStatus.readyForPickup) {
       changeOrderStatus(OrderStatus.pickedUpByDriver);
       changeOrderStatus(OrderStatus.outForDelivery);
       MySnackBar.showSuccess(
@@ -83,18 +80,19 @@ class OrderController extends GetxController {
         message: "follow the route to deliver the order to buyer",
       );
     }
+    update();
   }
 
   void orderDelivered() {
-    if (selectedOrder[0].status == OrderStatus.pickedUpByDriver ||
-        selectedOrder[0].status == OrderStatus.outForDelivery) {
-      _selectedOrder[0].status = OrderStatus.delivered;
-
+    if (_order.value.status == OrderStatus.pickedUpByDriver ||
+        _order.value.status == OrderStatus.outForDelivery) {
+      changeOrderStatus(OrderStatus.delivered);
       MySnackBar.showSuccess(
         title: "Order Delivered Successfully",
         message: "",
       );
     }
+    update();
   }
 }
 
@@ -110,7 +108,7 @@ class OrderController extends GetxController {
 
 
 
-  // final Rx<OrderModel> _selectedOrder = OrderModel(
+  // final Rx<OrderModel> _order = OrderModel(
   //   id: "",
   //   date: "",
   //   time: "",

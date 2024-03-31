@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tb_driver/data/models/order_model.dart';
@@ -7,14 +8,13 @@ import 'package:tb_driver/utils/constant/app_colors.dart';
 import 'package:tb_driver/utils/extensions/extensions.dart';
 
 class OrderDetailsOrderCard extends StatelessWidget {
-  final OrderModel order;
-
-  const OrderDetailsOrderCard({super.key, required this.order});
+  const OrderDetailsOrderCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final order = OrderController.instance.order.value;
     return Container(
       width: width,
       padding: EdgeInsets.symmetric(
@@ -30,16 +30,16 @@ class OrderDetailsOrderCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Obx(
-          //   () =>
-
-          buildDetailes(
-            context,
-            "Order Status",
-            OrderController.instance.selectedOrder[0].status.enumToString(),
-            isOrderStatus: true,
+          GetBuilder(
+            init: OrderController(),
+            builder: (controller) => buildDetailes(
+              context,
+              "Order Status",
+            order.status.enumToString(),
+              isOrderStatus: true,
+            ),
           ),
-          //),
+
           buildDetailes(context, "Order Number", "#534345"),
           buildDetailes(context, "Placed Date", "30 Dec 24"),
           buildDetailes(context, "Store Name", "CBD VEG Store"),

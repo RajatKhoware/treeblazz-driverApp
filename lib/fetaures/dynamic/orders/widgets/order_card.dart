@@ -27,7 +27,7 @@ class OrdersCard extends StatelessWidget {
       onTap: onTap ??
           () {
             Get.to(() => OrderDetailsScreen(orders: order));
-            OrderController.instance.setSelectedOrder(order);
+            OrderController.instance.getOrderDetails(order.id);
           },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: height * 0.01),

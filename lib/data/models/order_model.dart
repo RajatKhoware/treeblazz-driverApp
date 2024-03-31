@@ -34,9 +34,27 @@ class OrderModel {
     required this.deliveryAddress,
     required this.pickupAddress,
   });
+
+  //
+  static OrderModel empty() => OrderModel(
+        id: "",
+        date: "",
+        time: "",
+        paymentMode: PaymentMode.paySwifter,
+        products: [],
+        status: OrderStatus.readyForPickup,
+        storeName: "",
+        subTotal: 0,
+        tax: 0,
+        deliveryCharges: 0,
+        discount: 0,
+        total: 0,
+        deliveryAddress: '',
+        pickupAddress: '',
+      );
 }
 
-class OrderModels {
+class Orderls {
   final String id;
   final String date;
   final String time;
@@ -53,7 +71,7 @@ class OrderModels {
   final String pickupAddress;
   // add user details also
 
-  OrderModels({
+  Orderls({
     required this.id,
     required this.date,
     required this.time,

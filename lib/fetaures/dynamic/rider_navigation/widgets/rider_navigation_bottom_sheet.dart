@@ -46,7 +46,7 @@ class _RiderNavigationBottoSheetState extends State<RiderNavigationBottoSheet> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final orderController = OrderController.instance;
-    final order = orderController.selectedOrder[0];
+    final order = orderController.order.value;
     return AnimatedContainer(
       duration: const Duration(seconds: 1),
       width: width,

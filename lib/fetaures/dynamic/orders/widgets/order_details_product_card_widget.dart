@@ -4,18 +4,21 @@ import 'package:tb_driver/utils/comman/my_text.dart';
 import 'package:tb_driver/utils/constant/app_colors.dart';
 import 'package:tb_driver/utils/constant/app_images.dart';
 
+import '../controllers/order_controller.dart';
+
 class OrderDetailsProductsCard extends StatelessWidget {
-  final OrderModel order;
+
 
   const OrderDetailsProductsCard({
-    super.key,
-    required this.order,
+    super.key
   });
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final order = OrderController.instance.order.value;
+
     final productLength = order.products.length;
     final productHeight = height * (productLength * 0.18);
     return SizedBox(
